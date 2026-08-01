@@ -31,11 +31,11 @@
     <h1>Probing the <em>Gravitational Wave</em><br>Background with<br>Stellar Astrometry</h1>
     <p class="hero-sub">Graduate Student · University of Southern California</p>
     <p class="hero-desc">
-    I develop statistical methods to detect the stochastic gravitational wave background using stellar astrometry — searching for the subtle, correlated deflections in star positions imprinted by a cosmic sea of gravitational radiation.
+    I develop statistical methods to detect the stochastic gravitational wave background using stellar astrometry. I search for the subtle, correlated deflections in star positions imprinted by a cosmic sea of gravitational radiation.
     </p>
     <div class="hero-cta">
       <a href="research.html" class="btn btn-primary">View Research</a>
-      <a href="#" class="btn btn-ghost">CV / Publications</a>
+      <a href="https://orcid.org/0009-0000-9360-4759" class="btn btn-ghost">Publications</a>
     </div>
   </div>
 
@@ -69,7 +69,7 @@
     <div class="research-card">
       <div class="card-tag">UltraViolet EXplorer</div>
       <div class="card-title">UVEX Gravitational Wave Follow-Up</div>
-      <div class="card-desc">Optimized electromagnetic follow-up strategies for gravitational wave-detected binary neutron star mergers by simulating observing scenarios tailored to UVEX's capabilities — targeting kilonova light curves within critical detection windows. Statistical modeling of survey efficiency and cadence connected telescope design choices to maximized follow-up prospects for transient astrophysical events, with simulations extended to the upcoming ULTRASAT mission.</div>
+      <div class="card-desc">Optimized electromagnetic follow-up strategies for gravitational wave-detected binary neutron star mergers by simulating observing scenarios tailored to UVEX's capabilities. These simulations targeted kilonova light curves within critical detection windows. Statistical modeling of survey efficiency and cadence connected telescope design choices to maximized follow-up prospects for transient astrophysical events, with simulations extended to the upcoming ULTRASAT mission.</div>
       <a href="2501.14109v4.pdf" class="card-link">Paper from Thesis →</a>
       <br>
       <a href="2502.17560v4.pdf" class="card-link">Additional Paper →</a>
@@ -78,7 +78,7 @@
     <div class="research-card">
       <div class="card-tag">SmallSat Research Laboratory</div>
       <div class="card-title">Small Satellite Project Manager</div>
-      <div class="card-desc">Led the development of two NSF- and AFRL-funded space missions — IMPRESS and EXACT — within the Small Satellite Research Laboratory, overseeing hardware-software integration through Gantt chart maintenance, critical path mapping, and optimized testing and documentation workflows. Drove EXACT through a significant design transition from a free-flying CubeSat to a hosted payload architecture, while coordinating cross-functional teams and ensuring compliance with UNP and NSF mission deadlines.</div>
+      <div class="card-desc">Led the development of two NSF- and AFRL-funded space missions, IMPRESS and EXACT, within the Small Satellite Research Laboratory, overseeing hardware-software integration through Gantt chart maintenance, critical path mapping, and optimized testing and documentation workflows. Drove EXACT through a significant design transition from a free-flying CubeSat to a hosted payload architecture, while coordinating cross-functional teams and ensuring compliance with UNP and NSF mission deadlines.</div>
       <!-- <a href="paper2.pdf" class="card-link">PDF →</a> -->
     </div>
 
@@ -136,38 +136,26 @@
 
 <!-- ADDITIONAL PROJECTS -->
 <section id="projects">
-  <div class="section-eyebrow">Additional Projects</div>
-  <h2>Data Science &amp; <em>Quantitative Work</em></h2>
-  <p class="section-desc">Outside of my formal astrophysics research I enjoy building data-driven tools and exploring quantitative problems, especially in machine learning and data science topics.</p>
+  <div class="section-eyebrow">Highlighted Accomplishments</div>
+  <h2>Technical &amp; <em>Quantitative Work</em></h2>
+  <p class="section-desc">A selection of technical projects and outcomes spanning large-scale simulation, real-time systems, and predictive modeling.</p>
   <div class="projects-grid">
     <div class="project-card">
-      <div class="project-tag">Quantitative Finance</div>
-      <div class="card-title">S&P 500 Stock Market Analysis: Time-Series Forecasting &amp; Crash Detection </div>
-      <div class="card-desc">Applied supervised machine learning methods to S&P 500 historical market data to address two core problems: forecasting future price trends through time-series regression and detecting market crash events through classification techniques. This project involves systematic comparison of multiple models, dimensionality reduction for feature extraction, and rigorous evaluation through quantitative metrics such as MSE and cross-entropy loss.</div>
-      <div class="project-links">
-        <a href="#" class="project-link">GitHub →</a>
-        <a href="#" class="project-link secondary">Write-up</a>
-      </div>
+      <div class="project-tag">Signal Processing · HPC</div>
+      <div class="card-title">Large-Scale SNR Simulation &amp; Memory Optimization</div>
+      <div class="card-desc">Diagnosed a critical memory bottleneck in a signal-to-noise-ratio simulation for gravitational-wave astrometry. The original implementation had a peak allocation of about 870 GB and failed at production scale. Redesigned the core algorithm to stream calculations incrementally, cutting peak memory to about 75 MB while validating bit-for-bit numerical equivalence against the original implementation. Independently formulate and test hypotheses on signal behavior across varying survey geometries and noise models, running large-scale simulations on USC's CARC Discovery HPC cluster.</div>
     </div>
 
     <div class="project-card">
-      <div class="project-tag">Machine Learning</div>
-      <div class="card-title">Loan Default Risk Modeling: Financial Risk Assessment &amp; Credit Scoring</div>
-      <div class="card-desc">Describe the ML problem here — classification, regression, time-series forecasting, or something else. Mention the framework (PyTorch, sklearn, JAX) and the key result or insight.</div>
-      <div class="project-links">
-        <a href="#" class="project-link">GitHub →</a>
-        <a href="#" class="project-link secondary">Notebook</a>
-      </div>
+      <div class="project-tag">Real-Time Systems · Predictive Modeling</div>
+      <div class="card-title">TURBO Observatory: Low-Latency Detection &amp; Tracking Pipeline</div>
+      <div class="card-desc">Engineered low-latency Python pipelines for real-time detection and tracking of objects in under 30 seconds. Designed dynamic algorithms for automated identification and tracking using predictive modeling and feature extraction, with an improved GitHub-based workflow for debugging and reliability.</div>
     </div>
 
     <div class="project-card">
-      <div class="project-tag">Data Analysis</div>
-      <div class="card-title">Spotify Hit Predictor: Popularity Regression &amp; Recommendation Systems</div>
-      <div class="card-desc">An exploratory analysis or visualisation project — working with a large dataset, building a dashboard, or producing a reproducible data pipeline with interesting findings.</div>
-      <div class="project-links">
-        <a href="#" class="project-link">GitHub →</a>
-        <a href="#" class="project-link secondary">Demo</a>
-      </div>
+      <div class="project-tag">C++ · Orbital Mechanics</div>
+      <div class="card-title">Predictive Modeling for CubeSat Orbital Mechanics</div>
+      <div class="card-desc">Developed C++ algorithms for predictive modeling and error correction in orbital mechanics for the IMPRESS and EXACT CubeSats, two NSF- and AFRL-funded missions. Contributed to ADCS hardware testing and calibration before moving into system-level project management for both missions.</div>
     </div>
 
   </div>
@@ -180,21 +168,21 @@
     <img src="Sydney-109.jpg" style="max-width: 300px; width: 100%; border-radius: inherit;">
   </div>
     <div class="about-body">
-      <p>I am a 1st-year PhD student in physics at University of Southern California, advised by Dr. Kris Pardo, working at the intersection of precision astrometry and gravitational wave cosmology.</p>
-      <p>My current work focuses on developing the angular power spectrum formalism for detecting a stochastic gravitational-wave background through stellar astrometry, and characterizing what information real surveys like the Nancy Grace Roman Space Telescope can realistically extract given survey geometry and noise.</p>
-      <p>Before my PhD I completed my BSc in Astrophysics and Physics at University of Minnesota, where I became interested in gravitational wave cosmology and completed my senior thesis on optimizing electromagnetic follow-up strategies for gravitational wave events using the UltraViolet EXplorer (UVEX).</p>
-      <p> I also have strong interests and experience in data science and machine learning, which I actively develop through independent projects alongside my research.</p>
+      <p>I am a graduate researcher in physics at the University of Southern California, advised by Dr. Kris Pardo, working at the intersection of precision astrometry, gravitational-wave cosmology, and large-scale statistical modeling.</p>
+      <p>My research focuses on developing the angular power spectrum formalism for detecting a stochastic gravitational-wave background through stellar astrometry. I also characterize what information real surveys like the Nancy Grace Roman Space Telescope can realistically extract given survey geometry and noise. This work has required rebuilding simulation code to run efficiently at scale on HPC clusters.</p>
+      <p>Before USC, I completed my B.S. in Astrophysics and Physics at the University of Minnesota, where I managed two NSF- and AFRL-funded CubeSat missions, built real-time detection pipelines for the TURBO Observatory, and completed my senior thesis on optimizing electromagnetic follow-up strategies for gravitational-wave events using the UltraViolet EXplorer (UVEX).</p>
+      <p>Outside formal research, I focus on the quantitative and computational side of physics. This includes predictive modeling, optimization, and building systems that handle data at scale.</p>
       <div class="tag-list">
         <span class="tag">SGWB</span>
         <span class="tag">Astrometry</span>
         <span class="tag">Gravitational Waves</span>
-        <span class="tag">PTA</span>
         <span class="tag">Bayesian Statistics</span>
         <span class="tag">Python</span>
-        <span class="tag">GW Theory</span>
-        <span class="tag">Roman</span>
-        <span class="tag">Machine Learning</span>
-        <span class="tag">Data Science</span>
+        <span class="tag">C++</span>
+        <span class="tag">Predictive Modeling</span>
+        <span class="tag">Optimization</span>
+        <span class="tag">High-Performance Computing</span>
+        <span class="tag">Time-Series Forecasting</span>
         <span class="tag">Monte Carlo Simulations</span>
       </div>
     </div>
@@ -205,7 +193,7 @@
 <section id="contact">
   <div class="section-eyebrow">Get in touch</div>
   <h2>Let's <em>Connect</em></h2>
-  <p style="color:var(--muted);font-size:0.95rem;">Feel free to reach out — I'm always happy to connect.</p>
+  <p style="color:var(--muted);font-size:0.95rem;">Feel free to reach out. I'm always happy to connect.</p>
   <div class="contact-links">
     <a href="mailto:sleggio@usc.edu" class="contact-link">Email</a>
     <a href="https://www.linkedin.com/in/sydney-leggio/" class="contact-link">LinkedIn</a>
