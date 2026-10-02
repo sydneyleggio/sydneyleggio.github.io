@@ -8,8 +8,6 @@
   const ctx = canvas.getContext('2d');
   const dateLabel = document.getElementById('mstDate');
 
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
   let data = null;
   let nodePos = {};
   let snapshotIdx = 0;
@@ -17,14 +15,13 @@
   let running = false;
   let frameTick = 0;
   let cssW = 0, cssH = 0;
-  // Slower: hold each snapshot for ~1.5s at 60fps
   const FRAMES_PER_SNAPSHOT = 90;
 
   function resize() {
     const dpr = window.devicePixelRatio || 1;
     const parent = canvas.parentElement;
     cssW = Math.min(parent.offsetWidth || 540, 600);
-    cssH = 340;
+    cssH = 380;
     canvas.style.width = cssW + 'px';
     canvas.style.height = cssH + 'px';
     canvas.width = Math.round(cssW * dpr);
@@ -38,7 +35,7 @@
     const nodes = data.nodes;
     const n = nodes.length;
     const cx = W / 2, cy = H / 2;
-    const baseR = Math.min(W, H) * 0.38;
+    const baseR = Math.min(W, H) * 0.40;
     nodes.forEach((node, i) => {
       const angle = (i / n) * Math.PI * 2 - Math.PI / 2;
       const r = baseR * (0.6 + 0.4 * (1 - node.centrality));
@@ -56,16 +53,16 @@
   }
 
   function edgeColor(dist) {
-    if (dist < 0.6) return 'rgba(125,232,160,0.65)';
-    if (dist < 0.9) return 'rgba(91,164,245,0.50)';
-    return 'rgba(245,163,91,0.40)';
+    if (dist < 0.6) return 'rgba(125,232,160,0.7)';
+    if (dist < 0.9) return 'rgba(91,164,245,0.55)';
+    return 'rgba(245,163,91,0.45)';
   }
 
   function draw() {
     if (!data) return;
     const W = cssW, H = cssH;
     ctx.clearRect(0, 0, W, H);
-    ctx.fillStyle = 'rgba(8,13,30,0.7)';
+    ctx.fillStyle = 'rgba(8,13,30,0.75)';
     ctx.fillRect(0, 0, W, H);
 
     const snap = data.snapshots[snapshotIdx];
@@ -78,7 +75,7 @@
       ctx.moveTo(a.x, a.y);
       ctx.lineTo(b.x, b.y);
       ctx.strokeStyle = edgeColor(edge.distance);
-      ctx.lineWidth = Math.max(0.7, (1.2 - edge.distance) * 2.5);
+      ctx.lineWidth = Math.max(0.8, (1.2 - edge.distance) * 2.8);
       ctx.stroke();
     }
 
@@ -91,15 +88,15 @@
 
     for (const [id, pos] of Object.entries(nodePos)) {
       const deg = degree[id] || 0;
-      const r = 3 + (deg / maxDeg) * 5;
+      const r = 3.5 + (deg / maxDeg) * 5.5;
       const alpha = 0.55 + (deg / maxDeg) * 0.4;
       ctx.beginPath();
       ctx.arc(pos.x, pos.y, r, 0, Math.PI * 2);
       ctx.fillStyle = `rgba(91,164,245,${alpha})`;
       ctx.fill();
-      if (deg >= maxDeg * 0.6) {
-        ctx.fillStyle = 'rgba(200,216,255,0.85)';
-        ctx.font = 'bold 7px Space Mono, monospace';
+      if (deg >= maxDeg * 0.55) {
+        ctx.fillStyle = 'rgba(200,216,255,0.9)';
+        ctx.font = 'bold 8px Space Mono, monospace';
         ctx.textAlign = 'center';
         ctx.fillText(id, pos.x, pos.y - r - 3);
       }
@@ -107,17 +104,17 @@
 
     if (dateLabel) dateLabel.textContent = snap.date;
 
-    ctx.font = '7px Space Mono, monospace'; ctx.textAlign = 'left';
+    ctx.font = '8px Space Mono, monospace'; ctx.textAlign = 'left';
     const legend = [
-      ['rgba(125,232,160,0.65)', 'High corr (d<0.6)'],
-      ['rgba(91,164,245,0.50)', 'Med corr'],
-      ['rgba(245,163,91,0.40)', 'Low corr'],
+      ['rgba(125,232,160,0.7)', 'High corr (d<0.6)'],
+      ['rgba(91,164,245,0.55)', 'Med corr'],
+      ['rgba(245,163,91,0.45)', 'Low corr'],
     ];
     legend.forEach(([color, label], i) => {
       ctx.fillStyle = color;
-      ctx.fillRect(10, 10 + i * 14, 12, 3);
-      ctx.fillStyle = 'rgba(90,106,136,0.8)';
-      ctx.fillText(label, 26, 13 + i * 14);
+      ctx.fillRect(10, 10 + i * 16, 14, 3);
+      ctx.fillStyle = 'rgba(90,106,136,0.85)';
+      ctx.fillText(label, 28, 14 + i * 16);
     });
   }
 
@@ -134,11 +131,8 @@
 
   const observer = new IntersectionObserver(entries => {
     const visible = entries[0].isIntersecting;
-    if (visible && !rafId && data && !prefersReduced) {
-      running = true; rafId = requestAnimationFrame(loop);
-    } else if (!visible && rafId) {
-      running = false; cancelAnimationFrame(rafId); rafId = null;
-    }
+    if (visible && !rafId && data) { running = true; rafId = requestAnimationFrame(loop); }
+    else if (!visible && rafId) { running = false; cancelAnimationFrame(rafId); rafId = null; }
   }, { threshold: 0.1 });
   observer.observe(canvas);
 
@@ -148,16 +142,14 @@
       data = d;
       resize();
       draw();
-      if (!prefersReduced) {
-        running = true;
-        rafId = requestAnimationFrame(loop);
-      }
+      running = true;
+      rafId = requestAnimationFrame(loop);
     })
     .catch(() => {
       ctx.fillStyle = 'rgba(90,106,136,0.6)';
-      ctx.font = '9px Space Mono, monospace';
+      ctx.font = '10px Space Mono, monospace';
       ctx.textAlign = 'center';
-      ctx.fillText('MST data unavailable', (cssW || canvas.width) / 2, (cssH || canvas.height) / 2);
+      ctx.fillText('MST data unavailable', (cssW || 300) / 2, (cssH || 300) / 2);
     });
 
   window.addEventListener('resize', () => { resize(); draw(); });
