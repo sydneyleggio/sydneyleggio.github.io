@@ -21,98 +21,64 @@
     <li><a href="projects.html" class="active">Projects</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="contact.html">Contact</a></li>
-    <li><a href="#" class="nav-resume">Resume</a></li>
+    <li><a href="resume.html" class="nav-resume">Resume</a></li>
   </ul>
 </nav>
 
 <div class="page-hero">
   <div class="section-eyebrow">Portfolio</div>
   <h2>Data Science &amp; <em>Quantitative Work</em></h2>
-  <p class="section-desc">Probabilistic modeling, financial data analysis, and signal processing projects built outside of my graduate research.</p>
+  <p class="section-desc">Probabilistic modeling, financial data analysis, and signal detection projects built outside of graduate research.</p>
 </div>
 
-<!-- QUANTITATIVE FINANCE -->
 <section id="projects">
-  <div class="section-eyebrow">Quantitative finance</div>
-  <h2>Market <em>Analysis</em></h2>
   <div class="projects-grid">
 
     <div class="project-card">
-      <div class="project-tag">Random Matrix Theory <span class="badge badge-complete">Complete</span></div>
-      <div class="card-title">S&amp;P 500 Regime Detection via RMT</div>
-      <div class="card-desc">Filters the rolling S&amp;P 500 correlation matrix using the Marchenko-Pastur law to separate noise eigenvalues from genuine market-mode structure. Hidden Markov Model over the cleaned correlation distance identifies volatility regimes. Includes out-of-sample minimum variance portfolio construction and Sharpe ratio comparison against a naive benchmark.</div>
+      <div class="project-tag">Quantitative Finance &middot; Random Matrix Theory <span class="badge badge-complete">Complete</span></div>
+      <div class="card-title">S&amp;P 500 Crash Risk Analysis</div>
+      <div class="card-desc">Filters the rolling S&amp;P 500 correlation matrix using the Marchenko-Pastur law to separate noise eigenvalues from genuine market-mode structure. Hidden Markov Model classification over the cleaned correlation distance identifies volatility regimes. Minimum spanning trees of 25 sector ETFs and indices (Feb&ndash;Apr 2020 crash) track how network topology collapses under systemic stress and recovers as sector-specific signals re-emerge. Includes out-of-sample minimum variance portfolio construction and Sharpe ratio comparison against a naive benchmark.</div>
       <div class="project-links">
         <a href="https://github.com/sydneyleggio/crash-risk-analysis" class="project-link">GitHub &rarr;</a>
+        <a href="index.html" class="project-link secondary">Live viz on homepage</a>
       </div>
     </div>
 
     <div class="project-card">
-      <div class="project-tag">Network Analysis <span class="badge badge-complete">Complete</span></div>
-      <div class="card-title">Sector Correlation Networks (MST)</div>
-      <div class="card-desc">Rolling minimum spanning trees of 25 sector ETFs and indices through the Feb-Apr 2020 crash, computed from 40-day Pearson correlation matrices. Tracks how network topology collapses during systemic stress and recovers as sector-specific signals re-emerge. Data and visualization live on the homepage.</div>
-      <div class="project-links">
-        <a href="https://github.com/sydneyleggio/crash-risk-analysis" class="project-link">GitHub &rarr;</a>
-        <a href="index.html#" class="project-link secondary">Live viz</a>
+      <div class="project-tag">Stochastic Modeling <span class="badge badge-progress">In Progress</span></div>
+      <div class="card-title">stochrisk</div>
+      <div class="card-desc">Python library for fitting and comparing stochastic volatility models to financial time series data.</div>
+
+      <div class="roadmap" style="margin-top:1.5rem;">
+        <div class="roadmap-phase done">
+          <div class="phase-label">Phase 1 &mdash; Complete</div>
+          <div class="phase-title">Core Model Suite</div>
+          <div class="phase-desc">GBM, Merton jump-diffusion, and truncated Levy flight with MLE fitting, log-likelihood, BIC scoring, and Monte Carlo path simulation. Interactive visualization on the homepage.</div>
+        </div>
+        <div class="roadmap-phase">
+          <div class="phase-label">Phase 2 &mdash; In Progress</div>
+          <div class="phase-title">Heston &amp; SABR Models</div>
+          <div class="phase-desc">Heston stochastic volatility and SABR model with characteristic function option pricing, calibration to implied vol surfaces, and smile analytics.</div>
+        </div>
+        <div class="roadmap-phase">
+          <div class="phase-label">Phase 3 &mdash; Planned</div>
+          <div class="phase-title">Risk Metrics &amp; Backtesting</div>
+          <div class="phase-desc">Value-at-Risk and CVaR estimation under each model, historical simulation backtesting with Kupiec and Christoffersen tests, and portfolio-level stress testing.</div>
+        </div>
+      </div>
+
+      <div class="project-links" style="margin-top:1.5rem;">
+        <a href="https://github.com/sydneyleggio/stochrisk" class="project-link">GitHub &rarr;</a>
       </div>
     </div>
 
-  </div>
-</section>
-
-<!-- STOCHASTIC MODELLING -->
-<section style="border-top:1px solid var(--border);">
-  <div class="section-eyebrow">Stochastic modeling</div>
-  <h2><em>stochrisk</em> Library</h2>
-
-  <div style="max-width:680px;margin-bottom:2.5rem;">
-    <p style="color:var(--muted);font-size:1rem;line-height:1.7;margin-bottom:1rem;">A Python library for fitting and comparing stochastic volatility models to financial time series data.</p>
-  </div>
-
-  <div class="roadmap">
-    <div class="roadmap-phase done">
-      <div class="phase-label">Phase 1 &mdash; Complete</div>
-      <div class="phase-title">Core Model Suite</div>
-      <div class="phase-desc">GBM, Merton jump-diffusion, and truncated Levy flight implemented with MLE fitting, log-likelihood, BIC scoring, and Monte Carlo path simulation. Includes the interactive visualization on the homepage.</div>
-    </div>
-    <div class="roadmap-phase">
-      <div class="phase-label">Phase 2 &mdash; In Progress</div>
-      <div class="phase-title">Heston &amp; SABR Models</div>
-      <div class="phase-desc">Heston stochastic volatility and SABR model implementation with characteristic function option pricing, calibration to implied vol surfaces, and smile analytics.</div>
-    </div>
-    <div class="roadmap-phase">
-      <div class="phase-label">Phase 3 &mdash; Planned</div>
-      <div class="phase-title">Risk Metrics &amp; Backtesting</div>
-      <div class="phase-desc">Value-at-Risk and Conditional VaR estimation under each model, historical simulation backtesting with Kupiec and Christoffersen tests, and portfolio-level stress testing.</div>
-    </div>
-  </div>
-
-  <div class="project-links" style="margin-top:2rem;">
-    <a href="https://github.com/sydneyleggio/stochrisk" class="project-link">GitHub &rarr;</a>
-  </div>
-</section>
-
-<!-- SIGNAL PROCESSING / RESEARCH-ADJACENT -->
-<section style="border-top:1px solid var(--border);">
-  <div class="section-eyebrow">Signal processing</div>
-  <h2>Statistical <em>Estimators</em></h2>
-  <div class="projects-grid">
-
     <div class="project-card">
-      <div class="project-tag">Astrometric GW Detection</div>
+      <div class="project-tag">Astrometric GW Detection &middot; Signal Processing</div>
       <div class="card-title">Gravitational Wave SNR Simulation</div>
-      <div class="card-desc">Large-scale simulation pipeline for detecting gravitational waves via correlated angular deflections in stellar positions, adapting a pulsar timing array framework to astrometry. Models signal-to-noise ratios across synthetic star catalogs, testing how detection sensitivity shifts across varying survey geometries and noise models. Led a critical re-engineering of the pipeline to run efficiently at production scale while preserving exact numerical accuracy.</div>
+      <div class="card-desc">Large-scale simulation pipeline for detecting gravitational waves via correlated angular deflections in stellar positions, adapting a pulsar timing array statistical framework to astrometry. Models signal-to-noise ratios across synthetic star catalogs to measure how detection sensitivity shifts with survey geometry and noise floor. Led a critical re-engineering of the pipeline to run at production scale while preserving exact numerical accuracy across all noise and signal regimes.</div>
       <div class="project-links">
         <a href="https://github.com/sydneyleggio/astrometry-toy-model" class="project-link">GitHub &rarr;</a>
         <a href="research.html" class="project-link secondary">Research page</a>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-tag">Bayesian Inference</div>
-      <div class="card-title">Hierarchical GW Background Models</div>
-      <div class="card-desc">Bayesian hierarchical model connecting SGWB amplitude and spectral shape to the underlying supermassive binary black hole population. MCMC posterior sampling over mass function and merger rate parameters using astrometric observables as the likelihood.</div>
-      <div class="project-links">
-        <a href="research.html" class="project-link">Research page &rarr;</a>
       </div>
     </div>
 
