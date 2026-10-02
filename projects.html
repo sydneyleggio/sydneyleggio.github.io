@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sydney Leggio</title>
+<title>Projects &mdash; Sydney Leggio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
@@ -12,7 +12,7 @@
 
 <canvas id="starfield"></canvas>
 
-<!-- nav — see _includes/nav.html -->
+<!-- nav -->
 <nav>
   <a href="index.html" class="nav-brand">Sydney Leggio</a>
   <ul class="nav-links">
@@ -21,43 +21,106 @@
     <li><a href="projects.html" class="active">Projects</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="contact.html">Contact</a></li>
+    <li><a href="#" class="nav-resume">Resume</a></li>
   </ul>
 </nav>
 
 <div class="page-hero">
-  <div class="section-eyebrow">Highlighted Accomplishments</div>
-  <h2>Technical &amp; <em>Quantitative Work</em></h2>
-  <p class="section-desc">A selection of technical projects and outcomes spanning large-scale simulation, real-time systems, and predictive modeling.</p>
+  <div class="section-eyebrow">Portfolio</div>
+  <h2>Data Science &amp; <em>Quantitative Work</em></h2>
+  <p class="section-desc">Probabilistic modeling, financial data analysis, and signal processing projects built outside of my graduate research.</p>
 </div>
 
+<!-- QUANTITATIVE FINANCE -->
 <section id="projects">
+  <div class="section-eyebrow">Quantitative finance</div>
+  <h2>Market <em>Analysis</em></h2>
   <div class="projects-grid">
 
     <div class="project-card">
-      <div class="project-tag">Signal Processing · HPC</div>
-      <div class="card-title">Large-Scale SNR Simulation &amp; Memory Optimization</div>
-      <div class="card-desc">Diagnosed a critical memory bottleneck in a signal-to-noise-ratio simulation for gravitational-wave astrometry. The original implementation had a peak allocation of about 870 GB and failed at production scale. Redesigned the core algorithm to stream calculations incrementally, cutting peak memory to about 75 MB while validating bit-for-bit numerical equivalence against the original implementation. Independently formulate and test hypotheses on signal behavior across varying survey geometries and noise models, running large-scale simulations on USC's CARC Discovery HPC cluster.</div>
+      <div class="project-tag">Random Matrix Theory <span class="badge badge-complete">Complete</span></div>
+      <div class="card-title">S&amp;P 500 Regime Detection via RMT</div>
+      <div class="card-desc">Filters the rolling S&amp;P 500 correlation matrix using the Marchenko-Pastur law to separate noise eigenvalues from genuine market-mode structure. Hidden Markov Model over the cleaned correlation distance identifies volatility regimes. Includes out-of-sample minimum variance portfolio construction and Sharpe ratio comparison against a naive benchmark.</div>
+      <div class="project-links">
+        <a href="https://github.com/sydneyleggio" class="project-link">GitHub &rarr;</a>
+      </div>
     </div>
 
     <div class="project-card">
-      <div class="project-tag">Real-Time Systems · Predictive Modeling</div>
-      <div class="card-title">TURBO Observatory: Low-Latency Detection &amp; Tracking Pipeline</div>
-      <div class="card-desc">Engineered low-latency Python pipelines for real-time detection and tracking of objects in under 30 seconds. Designed dynamic algorithms for automated identification and tracking using predictive modeling and feature extraction, with an improved GitHub-based workflow for debugging and reliability.</div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-tag">C++ · Orbital Mechanics</div>
-      <div class="card-title">Predictive Modeling for CubeSat Orbital Mechanics</div>
-      <div class="card-desc">Developed C++ algorithms for predictive modeling and error correction in orbital mechanics for the IMPRESS and EXACT CubeSats, two NSF- and AFRL-funded missions. Contributed to ADCS hardware testing and calibration before moving into system-level project management for both missions.</div>
+      <div class="project-tag">Network Analysis <span class="badge badge-complete">Complete</span></div>
+      <div class="card-title">Sector Correlation Networks (MST)</div>
+      <div class="card-desc">Rolling minimum spanning trees of 25 sector ETFs and indices through the Feb-Apr 2020 crash, computed from 40-day Pearson correlation matrices. Tracks how network topology collapses during systemic stress and recovers as sector-specific signals re-emerge. Data and visualization live on the homepage.</div>
+      <div class="project-links">
+        <a href="https://github.com/sydneyleggio" class="project-link">GitHub &rarr;</a>
+        <a href="index.html#" class="project-link secondary">Live viz</a>
+      </div>
     </div>
 
   </div>
 </section>
 
-<!-- footer — see _includes/footer.html -->
+<!-- STOCHASTIC MODELLING -->
+<section style="border-top:1px solid var(--border);">
+  <div class="section-eyebrow">Stochastic modeling</div>
+  <h2><em>stochrisk</em> Library</h2>
+
+  <div style="max-width:680px;margin-bottom:2.5rem;">
+    <p style="color:var(--muted);font-size:1rem;line-height:1.7;margin-bottom:1rem;">A Python library for fitting and comparing stochastic volatility models to financial time series data.</p>
+  </div>
+
+  <div class="roadmap">
+    <div class="roadmap-phase done">
+      <div class="phase-label">Phase 1 &mdash; Complete</div>
+      <div class="phase-title">Core Model Suite</div>
+      <div class="phase-desc">GBM, Merton jump-diffusion, and truncated Levy flight implemented with MLE fitting, log-likelihood, BIC scoring, and Monte Carlo path simulation. Includes the interactive visualization on the homepage.</div>
+    </div>
+    <div class="roadmap-phase">
+      <div class="phase-label">Phase 2 &mdash; In Progress</div>
+      <div class="phase-title">Heston &amp; SABR Models</div>
+      <div class="phase-desc">Heston stochastic volatility and SABR model implementation with characteristic function option pricing, calibration to implied vol surfaces, and smile analytics.</div>
+    </div>
+    <div class="roadmap-phase">
+      <div class="phase-label">Phase 3 &mdash; Planned</div>
+      <div class="phase-title">Risk Metrics &amp; Backtesting</div>
+      <div class="phase-desc">Value-at-Risk and Conditional VaR estimation under each model, historical simulation backtesting with Kupiec and Christoffersen tests, and portfolio-level stress testing.</div>
+    </div>
+  </div>
+
+  <div class="project-links" style="margin-top:2rem;">
+    <a href="https://github.com/sydneyleggio" class="project-link">GitHub &rarr;</a>
+  </div>
+</section>
+
+<!-- SIGNAL PROCESSING / RESEARCH-ADJACENT -->
+<section style="border-top:1px solid var(--border);">
+  <div class="section-eyebrow">Signal processing</div>
+  <h2>Statistical <em>Estimators</em></h2>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-tag">Matched Filter Design</div>
+      <div class="card-title">GW Background SNR Optimization</div>
+      <div class="card-desc">Derives optimal cross-correlation and auto-correlation estimators for detecting the stochastic gravitational wave background in astrometric survey data. Computes Fisher information bounds on signal-to-noise ratio and characterises sensitivity as a function of survey depth and sky coverage. Connects directly to the first-author paper in preparation.</div>
+      <div class="project-links">
+        <a href="research.html" class="project-link">Research page &rarr;</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-tag">Bayesian Inference</div>
+      <div class="card-title">Hierarchical GW Background Models</div>
+      <div class="card-desc">Bayesian hierarchical model connecting SGWB amplitude and spectral shape to the underlying supermassive binary black hole population. MCMC posterior sampling over mass function and merger rate parameters using astrometric observables as the likelihood.</div>
+      <div class="project-links">
+        <a href="research.html" class="project-link">Research page &rarr;</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <footer>
-  <p>© 2025 Sydney Leggio</p>
-  <p>Built for science</p>
+  <p>&copy; 2026 Sydney Leggio</p>
+  <p>USC Physics &middot; Data Science &amp; Quantitative Research</p>
 </footer>
 
 <script src="assets/js/starfield.js"></script>

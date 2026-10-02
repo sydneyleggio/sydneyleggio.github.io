@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sydney Leggio</title>
+<title>Research &mdash; Sydney Leggio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
@@ -12,7 +12,7 @@
 
 <canvas id="starfield"></canvas>
 
-<!-- nav — see _includes/nav.html -->
+<!-- nav -->
 <nav>
   <a href="index.html" class="nav-brand">Sydney Leggio</a>
   <ul class="nav-links">
@@ -21,60 +21,103 @@
     <li><a href="projects.html">Projects</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="contact.html">Contact</a></li>
+    <li><a href="#" class="nav-resume">Resume</a></li>
   </ul>
 </nav>
 
 <div class="page-hero">
-  <div class="section-eyebrow">Research areas</div>
-  <h2>Current <em>Projects</em></h2>
-  <p class="section-desc"></p>
+  <div class="section-eyebrow">Graduate research</div>
+  <h2>Physics <em>Research</em></h2>
+  <p class="section-desc">M.S. Physics at USC. Developing statistical estimators for gravitational wave detection using stellar astrometry.</p>
 </div>
 
+<!-- PUBLICATION -->
 <section id="research">
+  <div class="section-eyebrow">Publications</div>
+  <h2>First-Author <em>Work</em></h2>
   <div class="research-grid">
 
-    <div class="research-card">
-      <div class="card-tag">CosmoLab</div>
-      <div class="card-title">Detecting SGWB Using Astrometry</div>
-      <div class="card-desc">Gravitational waves leave a quadrupolar imprint on the proper motions of stars across the sky. I am developing the angular power spectrum formalism to extract this signal, building toy models to derive optimal estimators for the astrometric setting, and characterizing what information real surveys like the Nancy Grace Roman Space Telescope can realistically recover once survey geometry and noise are taken into account.</div>
-      <!-- <a href="paper1.pdf" class="card-link">PDF →</a> -->
+    <div class="research-card featured">
+      <div class="card-tag">In Preparation &middot; Physical Review D</div>
+      <div class="card-title large">Auto-Correlation versus Cross-Correlation Estimators for Gravitational-Wave Backgrounds in Astrometric Surveys</div>
+      <p class="pub-authors"><strong>S. C. Leggio</strong> et al.</p>
+      <p class="pub-status">In preparation &middot; to be submitted to <em>Physical Review D</em></p>
+      <p class="card-desc">Gravitational waves leave a coherent quadrupolar imprint on the proper motions and parallaxes of distant sources. This work derives and compares auto-correlation and cross-correlation estimators for recovering the stochastic gravitational wave background (SGWB) from astrometric survey data. The analysis establishes optimal weighting schemes, computes Fisher information bounds on sensitivity, and characterises the dependence of signal-to-noise ratio on survey depth and sky coverage for Gaia and next-generation surveys.</p>
     </div>
-
-
-    <div class="research-card">
-      <div class="card-tag">UltraViolet EXplorer</div>
-      <div class="card-title">UVEX Gravitational Wave Follow-Up</div>
-      <div class="card-desc">Optimized electromagnetic follow-up strategies for gravitational wave-detected binary neutron star mergers by simulating observing scenarios tailored to UVEX's capabilities. These simulations targeted kilonova light curves within critical detection windows. Statistical modeling of survey efficiency and cadence connected telescope design choices to maximized follow-up prospects for transient astrophysical events, with simulations extended to the upcoming ULTRASAT mission.</div>
-      <a href="2501.14109v4.pdf" class="card-link">Paper from Thesis →</a>
-      <br>
-      <a href="2502.17560v4.pdf" class="card-link">Additional Paper →</a>
-    </div>
-
-    <div class="research-card">
-      <div class="card-tag">SmallSat Research Laboratory</div>
-      <div class="card-title">Small Satellite Project Manager</div>
-      <div class="card-desc">Led the development of two NSF- and AFRL-funded space missions, IMPRESS and EXACT, within the Small Satellite Research Laboratory, overseeing hardware-software integration through Gantt chart maintenance, critical path mapping, and optimized testing and documentation workflows. Drove EXACT through a significant design transition from a free-flying CubeSat to a hosted payload architecture, while coordinating cross-functional teams and ensuring compliance with UNP and NSF mission deadlines.</div>
-      <!-- <a href="paper2.pdf" class="card-link">PDF →</a> -->
-    </div>
-
-    <!-- 
-    <div class="research-card">
-      <div class="card-tag">Coming Soon</div>
-      <div class="card-title">[Future Paper]</div>
-      <div class="card-desc">Placeholder for a forthcoming project. Details will be added here upon submission.</div>
-    </div>
-      -->
 
   </div>
 </section>
 
-<!-- footer — see _includes/footer.html -->
+<!-- RESEARCH AREAS -->
+<section style="border-top:1px solid var(--border);">
+  <div class="section-eyebrow">Research areas</div>
+  <h2>Current <em>Projects</em></h2>
+  <p class="section-desc">The nanohertz stochastic gravitational wave background, recently indicated by pulsar timing arrays, encodes information about supermassive binary black holes across cosmic time.</p>
+  <div class="research-grid">
+
+    <div class="research-card">
+      <div class="card-tag">Astrometric GW Detection</div>
+      <div class="card-title">Correlated Proper Motion Anomalies from the SGWB</div>
+      <div class="card-desc">Gravitational waves leave a quadrupolar pattern in the proper motions of distant sources. Statistical estimators extract this signal from Gaia and future Roman and Theia catalogues via the Hellings-Downs-like correlation function for astrometric observables.</div>
+    </div>
+
+    <div class="research-card">
+      <div class="card-tag">SGWB Characterization</div>
+      <div class="card-title">Spectral Shape &amp; Anisotropy of the GW Background</div>
+      <div class="card-desc">Constraining the spectral index and angular power spectrum of the SGWB using angular correlations in astrometric residuals, complementary to pulsar timing array measurements in a different frequency band.</div>
+    </div>
+
+    <div class="research-card">
+      <div class="card-tag">SMBHB Population</div>
+      <div class="card-title">Supermassive Binary Black Hole Demography</div>
+      <div class="card-desc">Linking the SGWB amplitude and spectral shape to the underlying population of inspiralling supermassive binaries across cosmic time via Bayesian hierarchical models connecting GW observations to galaxy evolution.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- UVEX / ADDITIONAL PUBLICATIONS -->
+<section style="border-top:1px solid var(--border);">
+  <div class="section-eyebrow">Additional contributions</div>
+  <h2>Collaboration <em>Work</em></h2>
+  <div class="research-grid">
+
+    <div class="research-card">
+      <div class="card-tag">UVEX Science Team</div>
+      <div class="card-title">Ultraviolet Explorer Science Contributions</div>
+      <div class="card-desc">Contribution to UVEX mission science planning documents and technical studies as part of the broader USC astrophysics collaboration. Details to be added upon publication.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- BINARY INSPIRAL VISUALIZATION -->
+<section id="binaries" style="border-top:1px solid var(--border);">
+  <div class="section-eyebrow">Visualization</div>
+  <h2>Binary Inspiral <em>Simulation</em></h2>
+  <p class="section-desc">A supermassive binary black hole emitting gravitational waves as it inspirals. Tune eccentricity to see burst-like emission near periapsis.</p>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:1rem;">
+    <canvas id="binaryA" width="540" height="380"></canvas>
+    <p class="binary-panel-label">Click to pause &middot; <span class="hl" id="labelA">Quasi-circular inspiral</span></p>
+    <div class="controls">
+      <div class="control-group">
+        <label class="control-label" for="ratioA">Mass ratio q</label>
+        <input type="range" id="ratioA" min="1" max="6" step="0.1" value="3">
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="eccA">Eccentricity</label>
+        <input type="range" id="eccA" min="0" max="0.72" step="0.02" value="0">
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer>
-  <p>© 2025 Sydney Leggio</p>
-  <p>Built for science</p>
+  <p>&copy; 2026 Sydney Leggio</p>
+  <p>USC Physics</p>
 </footer>
 
 <script src="assets/js/starfield.js"></script>
-<script>(function loop(){ drawSF(); requestAnimationFrame(loop); })();</script>
+<script src="assets/js/binary-inspiral.js"></script>
 </body>
 </html>

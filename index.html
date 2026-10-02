@@ -12,7 +12,7 @@
 
 <canvas id="starfield"></canvas>
 
-<!-- nav — see _includes/nav.html -->
+<!-- nav -->
 <nav>
   <a href="index.html" class="nav-brand">Sydney Leggio</a>
   <ul class="nav-links">
@@ -21,196 +21,165 @@
     <li><a href="projects.html">Projects</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="contact.html">Contact</a></li>
+    <li><a href="#" class="nav-resume">Resume</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
   <div class="hero-text">
-    <div class="hero-eyebrow">Astrometry &amp; Gravitational Wave Cosmology</div>
-    <h1>Probing the <em>Gravitational Wave</em><br>Background with<br>Stellar Astrometry</h1>
-    <p class="hero-sub">Graduate Student · University of Southern California</p>
+    <div class="hero-eyebrow">Data Science &amp; Quantitative Research</div>
+    <h1>Modeling Risk,<br>Signal, and<br>Uncertainty</h1>
+    <p class="hero-sub">M.S. Physics &middot; University of Southern California &middot; 2027</p>
     <p class="hero-desc">
-    I develop statistical methods to detect the stochastic gravitational wave background using stellar astrometry. I search for the subtle, correlated deflections in star positions imprinted by a cosmic sea of gravitational radiation.
+      I build probabilistic models and statistical tools at the intersection of physics and finance, from stochastic process simulation to random matrix theory and network-based risk metrics.
+
     </p>
     <div class="hero-cta">
-      <a href="research.html" class="btn btn-primary">View Research</a>
-      <a href="https://orcid.org/0009-0000-9360-4759" class="btn btn-ghost">Publications</a>
+      <a href="projects.html" class="btn btn-primary">View Projects</a>
+      <a href="research.html" class="btn btn-ghost">Research</a>
     </div>
   </div>
 
   <div class="canvas-wrapper">
-    <canvas id="binaryCanvas" width="420" height="420"></canvas>
-    <p class="canvas-label">Supermassive binary · Click to pause</p>
-    <div class="controls">
-      <div class="control-group">
-        <label class="control-label" for="heroMass">Mass ratio</label>
-        <input type="range" id="heroMass" min="1" max="5" step="0.1" value="2">
-      </div>
-      <div class="control-group">
-        <label class="control-label" for="heroSpeed">Speed</label>
-        <input type="range" id="heroSpeed" min="0.3" max="3" step="0.1" value="1">
-      </div>
+    <canvas id="monteCarloCanvas" height="300"></canvas>
+    <div class="model-toggle">
+      <button class="model-btn active" data-mc-model="gbm">GBM</button>
+      <button class="model-btn" data-mc-model="merton">Jump-Diffusion</button>
+      <button class="model-btn" data-mc-model="levy">Levy</button>
     </div>
+    <p class="canvas-label">Monte Carlo path simulation &middot; 60 paths</p>
   </div>
 </section>
 
-<!-- RESEARCH -->
-<section id="research">
-  <div class="research-grid">
-
-    <div class="research-card">
-      <div class="card-tag">CosmoLab</div>
-      <div class="card-title">Detecting SGWB Using Astrometry</div>
-      <div class="card-desc">Gravitational waves leave a quadrupolar imprint on the proper motions of stars across the sky. I am developing the angular power spectrum formalism to extract this signal, building toy models to derive optimal estimators for the astrometric setting, and characterizing what information real surveys like the Nancy Grace Roman Space Telescope can realistically recover once survey geometry and noise are taken into account.</div>
-      <!-- <a href="paper1.pdf" class="card-link">PDF →</a> -->
-    </div>
-
-    <div class="research-card">
-      <div class="card-tag">UltraViolet EXplorer</div>
-      <div class="card-title">UVEX Gravitational Wave Follow-Up</div>
-      <div class="card-desc">Optimized electromagnetic follow-up strategies for gravitational wave-detected binary neutron star mergers by simulating observing scenarios tailored to UVEX's capabilities. These simulations targeted kilonova light curves within critical detection windows. Statistical modeling of survey efficiency and cadence connected telescope design choices to maximized follow-up prospects for transient astrophysical events, with simulations extended to the upcoming ULTRASAT mission.</div>
-      <a href="2501.14109v4.pdf" class="card-link">Paper from Thesis →</a>
-      <br>
-      <a href="2502.17560v4.pdf" class="card-link">Additional Paper →</a>
-    </div>
-
-    <div class="research-card">
-      <div class="card-tag">SmallSat Research Laboratory</div>
-      <div class="card-title">Small Satellite Project Manager</div>
-      <div class="card-desc">Led the development of two NSF- and AFRL-funded space missions, IMPRESS and EXACT, within the Small Satellite Research Laboratory, overseeing hardware-software integration through Gantt chart maintenance, critical path mapping, and optimized testing and documentation workflows. Drove EXACT through a significant design transition from a free-flying CubeSat to a hosted payload architecture, while coordinating cross-functional teams and ensuring compliance with UNP and NSF mission deadlines.</div>
-      <!-- <a href="paper2.pdf" class="card-link">PDF →</a> -->
-    </div>
-
-    <!-- 
-    <div class="research-card">
-      <div class="card-tag">Coming Soon</div>
-      <div class="card-title">[Future Paper]</div>
-      <div class="card-desc">Placeholder for a forthcoming project. Details will be added here upon submission.</div>
-    </div>
-      -->
-
-  </div>
-</section>
-
-<!-- DUAL BINARY VISUALIZERS -->
-<section id="binaries">
-  <div class="section-eyebrow">Interactive simulations</div>
-  <h2>The Sources of the <em>Background</em></h2>
-  <p class="section-desc">The stochastic gravitational wave background is the incoherent superposition of gravitational waves from countless unresolved binaries. Below are two perspectives on the same physics.</p>
-
-  <div class="binary-duo">
-    <!-- Panel A: Close-up eccentric inspiral -->
-    <div class="binary-panel">
-      <p class="panel-title">Single Binary · Close-up</p>
-      <p class="panel-desc">A supermassive binary black hole inspiralling under gravitational wave emission. Tune eccentricity to see burst-like emission near periapsis.</p>
-      <canvas id="binaryA" width="480" height="360"></canvas>
-      <p class="binary-panel-label">Click to pause · <span class="hl" id="labelA">Quasi-circular</span></p>
-      <div class="controls" style="margin-top:0.6rem">
-        <div class="control-group">
-          <label class="control-label" for="ratioA">q</label>
-          <input type="range" id="ratioA" min="1" max="6" step="0.1" value="3">
-        </div>
-        <div class="control-group">
-          <label class="control-label" for="eccA">ecc</label>
-          <input type="range" id="eccA" min="0" max="0.72" step="0.02" value="0">
-        </div>
-      </div>
-    </div>
-
-    <!-- Panel B: Stochastic background / population sky map -->
-    <div class="binary-panel">
-      <p class="panel-title">Cosmic Population · Sky View</p>
-      <p class="panel-desc">Many binaries at different distances and orientations superpose to form a stochastic background. Green arrows show astrometric deflections of background sources.</p>
-      <canvas id="binaryB" width="480" height="360"></canvas>
-      <p class="binary-panel-label">Click canvas to add a binary · <span class="hl" id="labelB">N = 3 sources</span></p>
-      <div class="controls" style="margin-top:0.6rem">
-        <div class="control-group">
-          <label class="control-label" for="autoAdd">Auto-add</label>
-          <input type="range" id="autoAdd" min="0" max="5" step="1" value="0">
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ADDITIONAL PROJECTS -->
+<!-- FEATURED PROJECTS -->
 <section id="projects">
-  <div class="section-eyebrow">Highlighted Accomplishments</div>
-  <h2>Technical &amp; <em>Quantitative Work</em></h2>
-  <p class="section-desc">A selection of technical projects and outcomes spanning large-scale simulation, real-time systems, and predictive modeling.</p>
+  <div class="section-eyebrow">Featured work</div>
+  <h2>Recent <em>Projects</em></h2>
+  <p class="section-desc">Selected quantitative and data science projects. Full portfolio on the Projects page.</p>
   <div class="projects-grid">
-    <div class="project-card">
-      <div class="project-tag">Signal Processing · HPC</div>
-      <div class="card-title">Large-Scale SNR Simulation &amp; Memory Optimization</div>
-      <div class="card-desc">Diagnosed a critical memory bottleneck in a signal-to-noise-ratio simulation for gravitational-wave astrometry. The original implementation had a peak allocation of about 870 GB and failed at production scale. Redesigned the core algorithm to stream calculations incrementally, cutting peak memory to about 75 MB while validating bit-for-bit numerical equivalence against the original implementation. Independently formulate and test hypotheses on signal behavior across varying survey geometries and noise models, running large-scale simulations on USC's CARC Discovery HPC cluster.</div>
-    </div>
 
     <div class="project-card">
-      <div class="project-tag">Real-Time Systems · Predictive Modeling</div>
-      <div class="card-title">TURBO Observatory: Low-Latency Detection &amp; Tracking Pipeline</div>
-      <div class="card-desc">Engineered low-latency Python pipelines for real-time detection and tracking of objects in under 30 seconds. Designed dynamic algorithms for automated identification and tracking using predictive modeling and feature extraction, with an improved GitHub-based workflow for debugging and reliability.</div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-tag">C++ · Orbital Mechanics</div>
-      <div class="card-title">Predictive Modeling for CubeSat Orbital Mechanics</div>
-      <div class="card-desc">Developed C++ algorithms for predictive modeling and error correction in orbital mechanics for the IMPRESS and EXACT CubeSats, two NSF- and AFRL-funded missions. Contributed to ADCS hardware testing and calibration before moving into system-level project management for both missions.</div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="about-grid">
-  <div class="about-photo">
-    <img src="Sydney-109.jpg" style="max-width: 300px; width: 100%; border-radius: inherit;">
-  </div>
-    <div class="about-body">
-      <p>I am a graduate researcher in physics at the University of Southern California, advised by Dr. Kris Pardo, working at the intersection of precision astrometry, gravitational-wave cosmology, and large-scale statistical modeling.</p>
-      <p>My research focuses on developing the angular power spectrum formalism for detecting a stochastic gravitational-wave background through stellar astrometry. I also characterize what information real surveys like the Nancy Grace Roman Space Telescope can realistically extract given survey geometry and noise. This work has required rebuilding simulation code to run efficiently at scale on HPC clusters.</p>
-      <p>Before USC, I completed my B.S. in Astrophysics and Physics at the University of Minnesota, where I managed two NSF- and AFRL-funded CubeSat missions, built real-time detection pipelines for the TURBO Observatory, and completed my senior thesis on optimizing electromagnetic follow-up strategies for gravitational-wave events using the UltraViolet EXplorer (UVEX).</p>
-      <p>Outside formal research, I focus on the quantitative and computational side of physics. This includes predictive modeling, optimization, and building systems that handle data at scale.</p>
-      <div class="tag-list">
-        <span class="tag">SGWB</span>
-        <span class="tag">Astrometry</span>
-        <span class="tag">Gravitational Waves</span>
-        <span class="tag">Bayesian Statistics</span>
-        <span class="tag">Python</span>
-        <span class="tag">C++</span>
-        <span class="tag">Predictive Modeling</span>
-        <span class="tag">Optimization</span>
-        <span class="tag">High-Performance Computing</span>
-        <span class="tag">Time-Series Forecasting</span>
-        <span class="tag">Monte Carlo Simulations</span>
+      <div class="project-tag">Quantitative Finance</div>
+      <div class="card-title">S&amp;P 500 Regime Detection</div>
+      <div class="card-desc">Rolling Marchenko-Pastur filtering of the S&amp;P 500 correlation matrix to separate noise eigenvalues from market-mode structure, with Hidden Markov Model regime classification and out-of-sample portfolio construction.</div>
+      <div class="project-links">
+        <a href="https://github.com/sydneyleggio" class="project-link">GitHub &rarr;</a>
       </div>
     </div>
+
+    <div class="project-card">
+      <div class="project-tag">Stochastic Modeling <span class="badge badge-progress">In Progress</span></div>
+      <div class="card-title">stochrisk</div>
+      <div class="card-desc">Python library for comparing stochastic volatility models (GBM, Heston, SABR, Merton jump-diffusion) via log-likelihood, BIC, and tail-risk metrics. Includes option pricing and Value-at-Risk estimation.</div>
+      <div class="project-links">
+        <a href="https://github.com/sydneyleggio" class="project-link">GitHub &rarr;</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-tag">Signal Processing</div>
+      <div class="card-title">Gravitational Wave SNR Optimization</div>
+      <div class="card-desc">Cross-correlation estimator design for detecting the stochastic gravitational wave background in astrometric surveys. Derives optimal matched filters and computes Fisher information bounds on signal-to-noise ratio.</div>
+      <div class="project-links">
+        <a href="research.html" class="project-link">Read more &rarr;</a>
+      </div>
+    </div>
+
+  </div>
+  <p style="margin-top:2rem;font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;">
+    <a href="projects.html" style="color:var(--muted);text-decoration:none;border-bottom:1px solid var(--border);">See all projects &rarr;</a>
+  </p>
+</section>
+
+<!-- RESEARCH (condensed) -->
+<section id="research" style="border-top:1px solid var(--border);">
+  <div class="section-eyebrow">Graduate research</div>
+  <h2>Physics <em>Research</em></h2>
+  <p class="section-desc">My M.S. research develops statistical estimators for detecting gravitational waves using stellar astrometry.</p>
+  <div class="research-grid">
+    <div class="research-card featured">
+      <div class="card-tag">First Author &middot; In Preparation</div>
+      <div class="card-title large">Auto-Correlation versus Cross-Correlation Estimators for Gravitational-Wave Backgrounds in Astrometric Surveys</div>
+      <p class="pub-authors"><strong>S. C. Leggio</strong> et al. &mdash; to be submitted to <em>Physical Review D</em></p>
+      <p class="card-desc">Develops and compares auto-correlation and cross-correlation estimators for extracting the stochastic gravitational wave background signal from astrometric survey data. Derives optimal statistical estimators and analyses sensitivity bounds for Gaia and future surveys.</p>
+      <a href="research.html" class="card-link">Full research page &rarr;</a>
+    </div>
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- RMT VISUALIZATION -->
+<section class="viz-section">
+  <div class="section-eyebrow">Interactive visualization</div>
+  <h2>Random Matrix <em>Theory</em></h2>
+  <div class="viz-grid">
+    <div>
+      <p class="section-desc" style="margin-bottom:1.5rem;">The eigenvalue spectrum of a large random correlation matrix follows the Marchenko-Pastur distribution. Eigenvalues above the bulk edge carry genuine market information. Adjust the market correlation slider to see the market mode separate from noise.</p>
+      <div class="control-group" style="margin-bottom:1rem;">
+        <label class="control-label" for="marketCorrSlider">Market factor</label>
+        <input type="range" id="marketCorrSlider" min="0" max="1" step="0.05" value="0">
+      </div>
+      <p style="font-size:0.85rem;color:var(--muted);line-height:1.6;">Green curve: Marchenko-Pastur density. Orange bar: market-mode eigenvalue. Blue bars: noise bulk. Eigenvalues above the dashed line carry signal.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;">
+      <canvas id="rmtCanvas" height="320"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- MST VISUALIZATION -->
+<section class="viz-section">
+  <div class="section-eyebrow">Network analysis</div>
+  <h2>Market Correlation <em>Networks</em></h2>
+  <div class="viz-grid">
+    <div style="display:flex;flex-direction:column;align-items:center;">
+      <canvas id="mstCanvas" height="340"></canvas>
+      <p class="mst-date" id="mstDate"></p>
+    </div>
+    <div>
+      <p class="section-desc" style="margin-bottom:1.5rem;">Minimum spanning tree of rolling 40-day pairwise correlations across 25 sector ETFs and indices, animated through the Feb-Apr 2020 crash. Edge color encodes correlation strength; node size encodes degree centrality.</p>
+      <p style="font-size:0.85rem;color:var(--muted);line-height:1.6;">During the crash, the network collapses: all sectors become highly correlated (green edges dominate, node degrees equalize). As markets recover, sector-specific structure re-emerges.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT (condensed) -->
+<section id="about" style="border-top:1px solid var(--border);">
+  <div class="section-eyebrow">About</div>
+  <h2>The <em>Researcher</em></h2>
+  <div class="about-grid">
+    <div class="about-photo">[Photo]</div>
+    <div class="about-body">
+      <p>I am a physics M.S. student at USC with a background spanning gravitational wave detection, stochastic modeling, and applied data science. My research trains me to extract weak signals from noisy, high-dimensional data, a skill that translates directly to quantitative finance and data science.</p>
+      <p>Outside the lab I build tools for financial time-series analysis and am working toward roles in data science, quantitative research, and quantitative finance.</p>
+      <a href="about.html" class="card-link" style="margin-top:0.5rem;">Full bio &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT (condensed) -->
 <section id="contact">
   <div class="section-eyebrow">Get in touch</div>
   <h2>Let's <em>Connect</em></h2>
-  <p style="color:var(--muted);font-size:0.95rem;">Feel free to reach out. I'm always happy to connect.</p>
+  <p style="color:var(--muted);font-size:0.95rem;">Open to data science, quantitative research, and quant finance opportunities. Reach out.</p>
   <div class="contact-links">
     <a href="mailto:sleggio@usc.edu" class="contact-link">Email</a>
     <a href="https://www.linkedin.com/in/sydney-leggio/" class="contact-link">LinkedIn</a>
     <a href="https://github.com/sydneyleggio" class="contact-link">GitHub</a>
-    <a href="https://orcid.org/0009-0000-9360-4759" class="contact-link">ORCID</a>
-    <a href="https://arxiv.org/search/?query=Sydney+C.+Leggio&searchtype=all&abstracts=show&order=-announced_date_first&size=50" class="contact-link">arXiv</a>
   </div>
 </section>
 
-<!-- footer — see _includes/footer.html -->
 <footer>
-  <p>© 2025 Sydney Leggio</p>
-  <p>Built for science</p>
+  <p>&copy; 2026 Sydney Leggio</p>
+  <p>USC Physics &middot; Data Science &amp; Quantitative Research</p>
 </footer>
 
 <script src="assets/js/starfield.js"></script>
-<script src="assets/js/binary-hero.js"></script>
-<script src="assets/js/binary-panels.js"></script>
+<script>
+(function sfLoop(){ drawSF(); requestAnimationFrame(sfLoop); })();
+</script>
+<script src="assets/js/monte-carlo.js"></script>
+<script src="assets/js/rmt-viz.js"></script>
+<script src="assets/js/mst-viz.js"></script>
 </body>
 </html>
