@@ -7,8 +7,6 @@
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
 
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
   const HIST_W = 80;
   const N_PATHS = 60;
   const STEPS = 120;
@@ -94,7 +92,7 @@
     const dpr = window.devicePixelRatio || 1;
     const rect = canvas.parentElement.getBoundingClientRect();
     cssW = Math.min(rect.width || 560, 860);
-    cssH = 300;
+    cssH = 360;
     canvas.style.width = cssW + 'px';
     canvas.style.height = cssH + 'px';
     canvas.width = Math.round(cssW * dpr);
@@ -107,13 +105,13 @@
   function draw() {
     const W = cssW, H = cssH;
     const plotW = W - HIST_W - 16;
-    const padT = 24, padB = 28, padL = 40;
+    const padT = 28, padB = 32, padL = 44;
 
     ctx.clearRect(0, 0, W, H);
-    ctx.fillStyle = 'rgba(8,13,30,0.7)';
+    ctx.fillStyle = 'rgba(8,13,30,0.75)';
     ctx.fillRect(0, 0, W, H);
 
-    const step = prefersReduced ? STEPS : Math.min(tick, STEPS);
+    const step = Math.min(tick, STEPS);
 
     let minP = Infinity, maxP = -Infinity;
     for (const p of paths) {
@@ -129,10 +127,15 @@
     function yOf(v) { return padT + (1 - (v - minP) / (maxP - minP)) * (H - padT - padB); }
 
     // Grid
-    ctx.strokeStyle = 'rgba(91,164,245,0.07)'; ctx.lineWidth = 1;
+    ctx.strokeStyle = 'rgba(91,164,245,0.08)'; ctx.lineWidth = 1;
     for (let i = 0; i <= 4; i++) {
       const y = padT + (i / 4) * (H - padT - padB);
       ctx.beginPath(); ctx.moveTo(padL, y); ctx.lineTo(plotW, y); ctx.stroke();
+      const val = maxP - (i / 4) * (maxP - minP);
+      ctx.fillStyle = 'rgba(90,106,136,0.6)';
+      ctx.font = '9px Space Mono, monospace';
+      ctx.textAlign = 'right';
+      ctx.fillText(val.toFixed(0), padL - 4, y + 3);
     }
 
     const model = getModel();
@@ -145,20 +148,20 @@
       ctx.beginPath();
       ctx.moveTo(xOf(0), yOf(p[0]));
       for (let s = 1; s <= step && s < p.length; s++) ctx.lineTo(xOf(s), yOf(p[s]));
-      ctx.strokeStyle = `rgba(${pathColor[0]},${pathColor[1]},${pathColor[2]},0.22)`;
+      ctx.strokeStyle = `rgba(${pathColor[0]},${pathColor[1]},${pathColor[2]},0.25)`;
       ctx.lineWidth = 1;
       ctx.stroke();
     }
 
     // S0 reference line
     ctx.beginPath(); ctx.moveTo(padL, yOf(100)); ctx.lineTo(plotW, yOf(100));
-    ctx.strokeStyle = 'rgba(200,216,255,0.1)'; ctx.lineWidth = 1;
+    ctx.strokeStyle = 'rgba(200,216,255,0.12)'; ctx.lineWidth = 1;
     ctx.setLineDash([4, 6]); ctx.stroke(); ctx.setLineDash([]);
 
     ctx.fillStyle = 'rgba(90,106,136,0.7)';
     ctx.font = '9px Space Mono, monospace';
     ctx.textAlign = 'center';
-    ctx.fillText('Time (trading days)', padL + (plotW - padL) / 2, H - 6);
+    ctx.fillText('Time (trading days)', padL + (plotW - padL) / 2, H - 8);
 
     // Histogram
     if (step >= STEPS * 0.3) {
@@ -177,13 +180,12 @@
     }
 
     const labelMap = { gbm: 'GBM · Log-normal', merton: 'Merton Jump-Diffusion', levy: 'Levy Flight' };
-    ctx.fillStyle = 'rgba(90,106,136,0.85)';
-    ctx.font = '8px Space Mono, monospace';
+    ctx.fillStyle = `rgba(${pathColor[0]},${pathColor[1]},${pathColor[2]},0.85)`;
+    ctx.font = '9px Space Mono, monospace';
     ctx.textAlign = 'left';
-    ctx.fillText(labelMap[model], padL + 4, padT + 10);
+    ctx.fillText(labelMap[model], padL + 4, padT + 14);
   }
 
-  // Advance one step every 3 frames (~20fps effective path speed)
   let frameCount = 0;
   function loop() {
     if (!running) return;
@@ -198,11 +200,8 @@
 
   const observer = new IntersectionObserver(entries => {
     const visible = entries[0].isIntersecting;
-    if (visible && !rafId && !prefersReduced) {
-      running = true; rafId = requestAnimationFrame(loop);
-    } else if (!visible && rafId) {
-      running = false; cancelAnimationFrame(rafId); rafId = null;
-    }
+    if (visible && !rafId) { running = true; rafId = requestAnimationFrame(loop); }
+    else if (!visible && rafId) { running = false; cancelAnimationFrame(rafId); rafId = null; }
   }, { threshold: 0.1 });
   observer.observe(canvas);
 
@@ -216,14 +215,9 @@
     });
   });
 
-  window.addEventListener('resize', () => { resize(); if (prefersReduced) draw(); });
+  window.addEventListener('resize', () => { resize(); });
 
   resize();
-  if (prefersReduced) {
-    tick = STEPS;
-    draw();
-  } else {
-    running = true;
-    rafId = requestAnimationFrame(loop);
-  }
+  running = true;
+  rafId = requestAnimationFrame(loop);
 })();

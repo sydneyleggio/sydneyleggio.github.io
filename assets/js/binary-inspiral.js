@@ -23,8 +23,6 @@
   let rafId = null;
   let active = true;
 
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
   cA.addEventListener('click', () => { runA = !runA; });
 
   function drawPanelA() {
@@ -87,7 +85,7 @@
   function loop() {
     if (!active) return;
     drawSF();
-    if (runA && !prefersReduced) drawPanelA();
+    if (runA) drawPanelA();
     rafId = requestAnimationFrame(loop);
   }
 
@@ -98,10 +96,6 @@
   }, { threshold: 0.1 });
   observer.observe(cA);
 
-  if (prefersReduced) {
-    drawPanelA();
-  } else {
-    active = true;
-    rafId = requestAnimationFrame(loop);
-  }
+  active = true;
+  rafId = requestAnimationFrame(loop);
 })();
