@@ -12,7 +12,7 @@
 
 <canvas id="starfield"></canvas>
 
-<!-- nav — see _includes/nav.html -->
+<!-- nav -->
 <nav>
   <a href="index.html" class="nav-brand">Sydney Leggio</a>
   <ul class="nav-links">
@@ -21,194 +21,164 @@
     <li><a href="projects.html">Projects</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="contact.html">Contact</a></li>
+    <li><a href="#" class="nav-resume">Resume</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
   <div class="hero-text">
-    <div class="hero-eyebrow">Astrometry &amp; Gravitational Wave Cosmology</div>
-    <h1>Reading the <em>Hum</em><br>of the Universe<br>in Starlight</h1>
-    <p class="hero-sub">PhD Candidate · University of Southern California</p>
+    <div class="hero-eyebrow">Data Science &amp; Quantitative Research</div>
+    <h1>Modelling <em>Risk,</em><br>Signal, and<br>Uncertainty</h1>
+    <p class="hero-sub">M.S. Physics &middot; University of Southern California &middot; 2027</p>
     <p class="hero-desc">
-      I use high-precision astrometry to probe the stochastic gravitational wave background — searching for the subtle, correlated deflections of starlight imprinted by a cosmic sea of gravitational radiation.
+      I build probabilistic models and statistical tools at the intersection of physics and finance, from stochastic process simulation to random matrix theory and network-based risk metrics.
     </p>
     <div class="hero-cta">
-      <a href="research.html" class="btn btn-primary">View Research</a>
-      <a href="#" class="btn btn-ghost">CV / Publications</a>
+      <a href="projects.html" class="btn btn-primary">View Projects</a>
+      <a href="research.html" class="btn btn-ghost">Research</a>
     </div>
   </div>
 
   <div class="canvas-wrapper">
-    <canvas id="binaryCanvas" width="420" height="420"></canvas>
-    <p class="canvas-label">Supermassive binary · Click to pause</p>
-    <div class="controls">
-      <div class="control-group">
-        <label class="control-label" for="heroMass">Mass ratio</label>
-        <input type="range" id="heroMass" min="1" max="5" step="0.1" value="2">
-      </div>
-      <div class="control-group">
-        <label class="control-label" for="heroSpeed">Speed</label>
-        <input type="range" id="heroSpeed" min="0.3" max="3" step="0.1" value="1">
-      </div>
+    <canvas id="monteCarloCanvas" height="300"></canvas>
+    <div class="model-toggle">
+      <button class="model-btn active" data-mc-model="gbm">GBM</button>
+      <button class="model-btn" data-mc-model="merton">Jump-Diffusion</button>
+      <button class="model-btn" data-mc-model="levy">Levy</button>
     </div>
+    <p class="canvas-label">Monte Carlo path simulation &middot; 60 paths</p>
   </div>
 </section>
 
-<!-- RESEARCH -->
-<section id="research">
-  <div class="section-eyebrow">Research areas</div>
-  <h2>Current <em>Projects</em></h2>
-  <p class="section-desc">Developing novel astrometric probes of the stochastic gravitational wave background sourced by the cosmic population of supermassive binary black holes.</p>
-  <div class="research-grid">
-    <div class="research-card">
-      <div class="card-tag">Astrometric GW Detection</div>
-      <div class="card-title">Correlated Proper Motion Anomalies from the SGWB</div>
-      <div class="card-desc">Gravitational waves leave a quadrupolar pattern in the proper motions of distant sources. I am developing statistical estimators to extract this signal from Gaia and future Roman/Theia catalogues.</div>
-      <a href="research.html" class="card-link">Read more →</a>
-    </div>
-    <div class="research-card">
-      <div class="card-tag">SGWB Characterization</div>
-      <div class="card-title">Spectral Shape &amp; Anisotropy of the GW Background</div>
-      <div class="card-desc">Constraining the spectral index and angular power spectrum of the SGWB using angular correlations in astrometric residuals, complementary to pulsar timing array measurements.</div>
-      <a href="research.html" class="card-link">Read more →</a>
-    </div>
-    <div class="research-card">
-      <div class="card-tag">SMBHB Population</div>
-      <div class="card-title">Supermassive Binary Black Hole Demography</div>
-      <div class="card-desc">Linking the SGWB amplitude and spectral shape to the underlying population of inspiralling supermassive binaries across cosmic time — their mass function, merger history, and galactic environment.</div>
-      <a href="research.html" class="card-link">Read more →</a>
-    </div>
-  </div>
-</section>
-
-<!-- DUAL BINARY VISUALIZERS -->
-<section id="binaries">
-  <div class="section-eyebrow">Interactive simulations</div>
-  <h2>The Sources of the <em>Background</em></h2>
-  <p class="section-desc">The SGWB is the incoherent superposition of GWs from countless unresolved binaries. Two perspectives on the same physics.</p>
-
-  <div class="binary-duo">
-    <!-- Panel A: Close-up eccentric inspiral -->
-    <div class="binary-panel">
-      <p class="panel-title">Single Binary · Close-up</p>
-      <p class="panel-desc">A supermassive binary black hole inspiralling under gravitational wave emission. Tune eccentricity to see burst-like emission near periapsis.</p>
-      <canvas id="binaryA" width="480" height="360"></canvas>
-      <p class="binary-panel-label">Click to pause · <span class="hl" id="labelA">Quasi-circular</span></p>
-      <div class="controls" style="margin-top:0.6rem">
-        <div class="control-group">
-          <label class="control-label" for="ratioA">q</label>
-          <input type="range" id="ratioA" min="1" max="6" step="0.1" value="3">
-        </div>
-        <div class="control-group">
-          <label class="control-label" for="eccA">ecc</label>
-          <input type="range" id="eccA" min="0" max="0.72" step="0.02" value="0">
-        </div>
-      </div>
-    </div>
-
-    <!-- Panel B: Stochastic background / population sky map -->
-    <div class="binary-panel">
-      <p class="panel-title">Cosmic Population · Sky View</p>
-      <p class="panel-desc">Many binaries at different distances and orientations superpose to form a stochastic background. Green arrows show astrometric deflections of background sources.</p>
-      <canvas id="binaryB" width="480" height="360"></canvas>
-      <p class="binary-panel-label">Click canvas to add a binary · <span class="hl" id="labelB">N = 3 sources</span></p>
-      <div class="controls" style="margin-top:0.6rem">
-        <div class="control-group">
-          <label class="control-label" for="autoAdd">Auto-add</label>
-          <input type="range" id="autoAdd" min="0" max="5" step="1" value="0">
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ADDITIONAL PROJECTS -->
+<!-- FEATURED PROJECTS -->
 <section id="projects">
-  <div class="section-eyebrow">Additional Projects</div>
-  <h2>Data Science &amp; <em>Quantitative Work</em></h2>
-  <p class="section-desc">Outside of my astrophysics research I enjoy building data-driven tools and exploring quantitative problems — from financial modelling to machine learning pipelines.</p>
+  <div class="section-eyebrow">Featured work</div>
+  <h2>Recent <em>Projects</em></h2>
+  <p class="section-desc">Selected quantitative and data science projects. Full portfolio on the Projects page.</p>
   <div class="projects-grid">
+
     <div class="project-card">
       <div class="project-tag">Quantitative Finance</div>
-      <div class="card-title">[Project Title]</div>
-      <div class="card-desc">A brief description of what this project does, the data sources used, and the methods — e.g. backtesting a momentum strategy, building a factor model, or analysing order-book microstructure.</div>
+      <div class="card-title">S&amp;P 500 Regime Detection</div>
+      <div class="card-desc">Rolling Marchenko-Pastur filtering of the S&amp;P 500 correlation matrix to separate noise eigenvalues from market-mode structure, with Hidden Markov Model regime classification and out-of-sample portfolio construction.</div>
       <div class="project-links">
-        <a href="#" class="project-link">GitHub →</a>
-        <a href="#" class="project-link secondary">Write-up</a>
+        <a href="https://github.com/sydneyleggio" class="project-link">GitHub &rarr;</a>
       </div>
     </div>
+
     <div class="project-card">
-      <div class="project-tag">Machine Learning</div>
-      <div class="card-title">[Project Title]</div>
-      <div class="card-desc">Describe the ML problem here — classification, regression, time-series forecasting, or something else. Mention the framework (PyTorch, sklearn, JAX) and the key result or insight.</div>
+      <div class="project-tag">Stochastic Modelling <span class="badge badge-progress">In Progress</span></div>
+      <div class="card-title">stochrisk</div>
+      <div class="card-desc">Python library for comparing stochastic volatility models (GBM, Heston, SABR, Merton jump-diffusion) via log-likelihood, BIC, and tail-risk metrics. Includes option pricing and Value-at-Risk estimation.</div>
       <div class="project-links">
-        <a href="#" class="project-link">GitHub →</a>
-        <a href="#" class="project-link secondary">Notebook</a>
+        <a href="https://github.com/sydneyleggio" class="project-link">GitHub &rarr;</a>
       </div>
     </div>
+
     <div class="project-card">
-      <div class="project-tag">Data Analysis</div>
-      <div class="card-title">[Project Title]</div>
-      <div class="card-desc">An exploratory analysis or visualisation project — working with a large dataset, building a dashboard, or producing a reproducible data pipeline with interesting findings.</div>
+      <div class="project-tag">Signal Processing</div>
+      <div class="card-title">Gravitational Wave SNR Optimization</div>
+      <div class="card-desc">Cross-correlation estimator design for detecting the stochastic gravitational wave background in astrometric surveys. Derives optimal matched filters and computes Fisher information bounds on signal-to-noise ratio.</div>
       <div class="project-links">
-        <a href="#" class="project-link">GitHub →</a>
-        <a href="#" class="project-link secondary">Demo</a>
+        <a href="research.html" class="project-link">Read more &rarr;</a>
       </div>
+    </div>
+
+  </div>
+  <p style="margin-top:2rem;font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;">
+    <a href="projects.html" style="color:var(--muted);text-decoration:none;border-bottom:1px solid var(--border);">See all projects &rarr;</a>
+  </p>
+</section>
+
+<!-- RESEARCH (condensed) -->
+<section id="research" style="border-top:1px solid var(--border);">
+  <div class="section-eyebrow">Graduate research</div>
+  <h2>Physics <em>Research</em></h2>
+  <p class="section-desc">My M.S. research develops statistical estimators for detecting gravitational waves using stellar astrometry.</p>
+  <div class="research-grid">
+    <div class="research-card featured">
+      <div class="card-tag">First Author &middot; In Preparation</div>
+      <div class="card-title large">Auto-Correlation versus Cross-Correlation Estimators for Gravitational-Wave Backgrounds in Astrometric Surveys</div>
+      <p class="pub-authors"><strong>S. C. Leggio</strong> et al. &mdash; to be submitted to <em>Physical Review D</em></p>
+      <p class="card-desc">Develops and compares auto-correlation and cross-correlation estimators for extracting the stochastic gravitational wave background signal from astrometric survey data. Derives optimal statistical estimators and analyses sensitivity bounds for Gaia and future surveys.</p>
+      <a href="research.html" class="card-link">Full research page &rarr;</a>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about">
+<!-- RMT VISUALIZATION -->
+<section class="viz-section">
+  <div class="section-eyebrow">Interactive visualization</div>
+  <h2>Random Matrix <em>Theory</em></h2>
+  <div class="viz-grid">
+    <div>
+      <p class="section-desc" style="margin-bottom:1.5rem;">The eigenvalue spectrum of a large random correlation matrix follows the Marchenko-Pastur distribution. Eigenvalues above the bulk edge carry genuine market information. Adjust the market correlation slider to see the market mode separate from noise.</p>
+      <div class="control-group" style="margin-bottom:1rem;">
+        <label class="control-label" for="marketCorrSlider">Market factor</label>
+        <input type="range" id="marketCorrSlider" min="0" max="1" step="0.05" value="0">
+      </div>
+      <p style="font-size:0.85rem;color:var(--muted);line-height:1.6;">Green curve: Marchenko-Pastur density. Orange bar: market-mode eigenvalue. Blue bars: noise bulk. Eigenvalues above the dashed line carry signal.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;">
+      <canvas id="rmtCanvas" height="320"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- MST VISUALIZATION -->
+<section class="viz-section">
+  <div class="section-eyebrow">Network analysis</div>
+  <h2>Market Correlation <em>Networks</em></h2>
+  <div class="viz-grid">
+    <div style="display:flex;flex-direction:column;align-items:center;">
+      <canvas id="mstCanvas" height="340"></canvas>
+      <p class="mst-date" id="mstDate"></p>
+    </div>
+    <div>
+      <p class="section-desc" style="margin-bottom:1.5rem;">Minimum spanning tree of rolling 40-day pairwise correlations across 25 sector ETFs and indices, animated through the Feb-Apr 2020 crash. Edge color encodes correlation strength; node size encodes degree centrality.</p>
+      <p style="font-size:0.85rem;color:var(--muted);line-height:1.6;">During the crash, the network collapses: all sectors become highly correlated (green edges dominate, node degrees equalize). As markets recover, sector-specific structure re-emerges.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT (condensed) -->
+<section id="about" style="border-top:1px solid var(--border);">
   <div class="section-eyebrow">About</div>
   <h2>The <em>Researcher</em></h2>
   <div class="about-grid">
     <div class="about-photo">[Photo]</div>
     <div class="about-body">
-      <p>I am a PhD candidate in astrophysics at University of Southern California, advised by Prof. [Advisor Name]. My research sits at the intersection of precision astrometry and gravitational wave cosmology, using the positions of distant stars and quasars as a galactic-scale detector for the stochastic gravitational wave background.</p>
-      <p>The nanohertz SGWB — recently indicated by pulsar timing arrays — encodes a wealth of information about the supermassive binary black hole population and early-universe physics. I am working to extract complementary constraints from upcoming astrometric surveys including Gaia, Roman, and Theia.</p>
-      <p>Before my PhD I completed my BSc in Physics at [Undergraduate Institution], where I became captivated by the idea that the universe's entire gravitational wave history might be hiding inside a catalogue of stellar positions.</p>
-      <div class="tag-list">
-        <span class="tag">SGWB</span>
-        <span class="tag">Astrometry</span>
-        <span class="tag">Gaia</span>
-        <span class="tag">SMBHB</span>
-        <span class="tag">PTA</span>
-        <span class="tag">Bayesian Inference</span>
-        <span class="tag">Python / JAX</span>
-        <span class="tag">GW Theory</span>
-        <span class="tag">Roman / Theia</span>
-        <span class="tag">Quantitative Finance</span>
-        <span class="tag">Machine Learning</span>
-        <span class="tag">Data Science</span>
-      </div>
+      <p>I am a physics M.S. student at USC with a background spanning gravitational wave detection, stochastic modelling, and applied data science. My research trains me to extract weak signals from noisy, high-dimensional data, a skill that translates directly to quantitative finance and data science.</p>
+      <p>Outside the lab I build tools for financial time-series analysis and am working toward roles in data science, quantitative research, and quantitative finance.</p>
+      <a href="about.html" class="card-link" style="margin-top:0.5rem;">Full bio &rarr;</a>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- CONTACT (condensed) -->
 <section id="contact">
   <div class="section-eyebrow">Get in touch</div>
   <h2>Let's <em>Connect</em></h2>
-  <p style="color:var(--muted);font-size:0.95rem;">Interested in astrometric GW detection, the SGWB, or collaboration on related topics? Reach out.</p>
+  <p style="color:var(--muted);font-size:0.95rem;">Open to data science, quantitative research, and quant finance opportunities. Reach out.</p>
   <div class="contact-links">
-    <a href="mailto:" class="contact-link">Email</a>
-    <a href="#" class="contact-link">Twitter / X</a>
-    <a href="https://github.com/sydleggio" class="contact-link">GitHub</a>
-    <a href="#" class="contact-link">ORCID</a>
-    <a href="#" class="contact-link">arXiv</a>
+    <a href="mailto:sleggio@usc.edu" class="contact-link">Email</a>
+    <a href="https://www.linkedin.com/in/sydney-leggio/" class="contact-link">LinkedIn</a>
+    <a href="https://github.com/sydneyleggio" class="contact-link">GitHub</a>
   </div>
 </section>
 
-<!-- footer — see _includes/footer.html -->
 <footer>
-  <p>© 2025 Sydney Leggio</p>
-  <p>Built for science</p>
+  <p>&copy; 2026 Sydney Leggio</p>
+  <p>USC Physics &middot; Data Science &amp; Quantitative Research</p>
 </footer>
 
 <script src="assets/js/starfield.js"></script>
-<script src="assets/js/binary-hero.js"></script>
-<script src="assets/js/binary-panels.js"></script>
+<script>
+(function sfLoop(){ drawSF(); requestAnimationFrame(sfLoop); })();
+</script>
+<script src="assets/js/monte-carlo.js"></script>
+<script src="assets/js/rmt-viz.js"></script>
+<script src="assets/js/mst-viz.js"></script>
 </body>
 </html>
