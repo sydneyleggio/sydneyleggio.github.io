@@ -7,7 +7,17 @@
   const cA = document.getElementById('binaryA');
   if (!cA) return;
   const ctxA = cA.getContext('2d');
-  const AW = cA.width, AH = cA.height, ACX = AW / 2, ACY = AH / 2;
+
+  // DPR scaling for sharpness on retina displays
+  const dpr = window.devicePixelRatio || 1;
+  const cssW = cA.width, cssH = cA.height;
+  cA.style.width = cssW + 'px';
+  cA.style.height = cssH + 'px';
+  cA.width = Math.round(cssW * dpr);
+  cA.height = Math.round(cssH * dpr);
+  ctxA.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  const AW = cssW, AH = cssH, ACX = AW / 2, ACY = AH / 2;
   let angA = 0, tA = 0, runA = true, lastRA = 0;
   const ripA = [];
   let rafId = null;
